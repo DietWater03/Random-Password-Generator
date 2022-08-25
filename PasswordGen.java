@@ -4,7 +4,7 @@ public class PasswordGen {
     private String upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
     private String numberCase = "1234567890";
-    private String specialChars = "~!@#$%&*()_-+={[}]|:;<>.?";
+    private String specialChars = "!@#$%&?";
 
     public String password;
     public int numChars;
@@ -18,29 +18,33 @@ public class PasswordGen {
 
         for (int i = 0; i < numChars; i++) { // loops (length of password) times and adds a random character.
 
-            int random = (int) (Math.random() * 4); // randomly selected integer to decide what kind of character to add
+            if (i == numChars / 2) {
+                password += "";
+            } else {
+                int random = (int) (Math.random() * 4); // randomly selected integer to decide what kind of character to
+                                                        // add
 
-            switch (random) {
-                case 0: // Adds a random uppercase letter
-                    password += String
-                            .valueOf(upperCaseLetters.charAt((int) (Math.random() * upperCaseLetters.length())));
-                    break;
+                switch (random) {
+                    case 0: // Adds a random uppercase letter
+                        password += String
+                                .valueOf(upperCaseLetters.charAt((int) (Math.random() * upperCaseLetters.length())));
+                        break;
 
-                case 1: // adds a random lowercase letter
-                    password += String
-                            .valueOf(lowerCaseLetters.charAt((int) (Math.random() * lowerCaseLetters.length())));
-                    break;
+                    case 1: // adds a random lowercase letter
+                        password += String
+                                .valueOf(lowerCaseLetters.charAt((int) (Math.random() * lowerCaseLetters.length())));
+                        break;
 
-                case 2: // adds a random number
-                    password += String.valueOf(numberCase.charAt((int) (Math.random() * numberCase.length())));
-                    break;
+                    case 2: // adds a random number
+                        password += String.valueOf(numberCase.charAt((int) (Math.random() * numberCase.length())));
+                        break;
 
-                case 3: // adds a random special character
-                    password += String.valueOf(specialChars.charAt((int) (Math.random() * specialChars.length())));
-                    break;
+                    case 3: // adds a random special character
+                        password += String.valueOf(specialChars.charAt((int) (Math.random() * specialChars.length())));
+                        break;
 
+                }
             }
-
         }
     }
 
@@ -118,7 +122,8 @@ public class PasswordGen {
                                                                                                                     // uppercase
                                                                                                                     // character
                                                                                                                     // to
-                                                                                                                    // password
+                                                                                                                    // pass
+                                                                                                                    // =word
                                                                                                                     // if
                                                                                                                     // check
                                                                                                                     // is
@@ -128,30 +133,19 @@ public class PasswordGen {
 
             password += String.valueOf(lowerCaseLetters.charAt((int) (Math.random() * lowerCaseLetters.length()))); // adds
                                                                                                                     // lowercase
-                                                                                                                    // character
-                                                                                                                    // to
-                                                                                                                    // password
-                                                                                                                    // if
-                                                                                                                    // check
-                                                                                                                    // is
-                                                                                                                    // false
+                                                                                                                    // ''
 
         } else if (specialCheck(password) == false) { // calls SpecialCheck method
 
-            password += String.valueOf(specialChars.charAt((int) (Math.random() * specialChars.length()))); // adds
+            password += String.valueOf(specialChars.charAt((int) (Math.random() * specialChars.length()))); // adds adds
                                                                                                             // special
                                                                                                             // character
-                                                                                                            // to
-                                                                                                            // password
-                                                                                                            // if check
-                                                                                                            // is false
+                                                                                                            // ''
 
         } else if (numCheck(password) == false) { // calls numCheck method
 
             password += String.valueOf(numberCase.charAt((int) (Math.random() * numberCase.length()))); // adds number
-                                                                                                        // to password
-                                                                                                        // if check is
-                                                                                                        // false
+                                                                                                        // ''
 
         }
 
